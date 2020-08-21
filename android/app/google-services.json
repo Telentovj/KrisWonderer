@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "225133239454",
+    "firebase_url": "https://kriswonderer-ac3d0.firebaseio.com",
+    "project_id": "kriswonderer-ac3d0",
+    "storage_bucket": "kriswonderer-ac3d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225133239454:android:da689f0411141343baef8f",
+        "android_client_info": {
+          "package_name": "com.awj.kriswonderer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225133239454-s8p7a0gfomp8maqcenbjc03ph2j02t6s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALgwkFiPIiarf6GOOCEW6bVm8RtImjJQ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225133239454-s8p7a0gfomp8maqcenbjc03ph2j02t6s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
