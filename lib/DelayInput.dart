@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import "package:numberpicker/numberpicker.dart";
-
 import 'Home.dart';
+import 'Personality.dart';
+
 class DelayInput extends StatefulWidget {
-  final String personality;
-  DelayInput({Key key, @required this.personality}) : super(key: key);
+  final Personality personality;
+
+  DelayInput({
+    Key key,
+    @required this.personality
+  }) : super(key: key);
+
   @override
   _DelayInputState createState() => _DelayInputState();
 }
@@ -21,12 +27,11 @@ class _DelayInputState extends State<DelayInput> {
       appBar: AppBar(
         title: Text('How long is your delay?')
       ),
-      body: TimerSetter(),
+      body: _buildTimeSetter(),
     );
   }
 
-
-  Widget TimerSetter(){
+  Widget _buildTimeSetter(){
     return Column(
       children: <Widget>[
         SizedBox(height: 50),
@@ -80,17 +85,20 @@ class _DelayInputState extends State<DelayInput> {
                 shape: CircleBorder(),
               ),
               child: IconButton(
-                  icon: Icon(Icons.play_arrow),
-                  color: Colors.white,
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(
-                        builder: (BuildContext context) => StatefulBuilder(
-                            builder: (BuildContext context, StateSetter setState /*You can rename this!*/) {
-                              return Home(personality: widget.personality, hours: hours, days: days, minutes: minutes);
-                            }
-                        )
-                    ));
-                  }
+                icon: Icon(Icons.play_arrow),
+                color: Colors.white,
+                onPressed: () {
+                  Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (BuildContext context) => StatefulBuilder(
+                      builder: (BuildContext context, StateSetter setState) {
+                        return Home(
+                          personality: widget.personality,
+                          duration: Duration(hours: hours + days * 24, minutes: minutes),
+                        );
+                      }
+                    )
+                  ));
+                }
               ),
             ),
           ),
