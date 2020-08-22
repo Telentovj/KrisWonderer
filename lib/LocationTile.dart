@@ -3,10 +3,11 @@ import 'package:kriswonderer/Location.dart';
 import 'package:kriswonderer/LocationDetailView.dart';
 
 class LocationTile extends StatelessWidget {
-
   final Location locale;
 
-  LocationTile({this.locale});
+  LocationTile({
+    this.locale
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +30,8 @@ class LocationTile extends StatelessWidget {
     );
   }
 
-  Color getColour(String type){
-    if(type == 'Foodie'){
+  Color getColour(String type) {
+    if (type == 'Foodie'){
       return Colors.orange[50];
     } else if(type == 'Adventurous'){
       return Colors.brown[50];
@@ -42,5 +43,4 @@ class LocationTile extends StatelessWidget {
       return Colors.blue[50];
     }
   }
-
 }

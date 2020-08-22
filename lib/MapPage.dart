@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:kriswonderer/Location.dart';
 import 'Location.dart';
+import 'LocationDetailView.dart';
 
 class MapPage extends StatefulWidget {
   final List<Location> locations;
@@ -131,19 +132,15 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
         infoWindow: InfoWindow(
           title: location.name,
         ),
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(
+              builder: (BuildContext context) {
+                return LocationDetailView(locale: location,);
+              }
+          ));
+        }
       ));
     });
-
-//    // Add base marker (Changi Airport)
-//    markers.add(
-//      Marker(
-//        markerId: MarkerId("Base"),
-//        position: LatLng(1.357386, 103.988390),
-//        infoWindow: InfoWindow(
-//          title: "Changi Airport"
-//        ),
-//      )
-//    );
 
     return markers;
   }

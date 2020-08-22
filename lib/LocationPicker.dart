@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:kriswonderer/Location.dart';
 import 'package:kriswonderer/LocationTile.dart';
 class LocationPicker extends StatefulWidget {
-
   final List<Location> locations;
   final List<Location> fullLocation;
 
@@ -55,7 +54,7 @@ class _LocationPickerState extends State<LocationPicker> {
               elevation: 5,
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(
-                    builder: (BuildContext context) => _buildLocationAdder(widget.locations, widget.fullLocation)
+                  builder: (BuildContext context) => _buildLocationAdder(widget.locations, widget.fullLocation)
                 ));
               },
             ),
