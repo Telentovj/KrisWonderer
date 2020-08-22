@@ -21,7 +21,32 @@ class Database {
         characteristics: doc.data['characteristics'] ?? [],
         x: doc.data['x'] ?? 1.353912,
         y: doc.data['y'] ?? 103.989295,
+        description: doc.data['description'] ?? 'Description not added',
+        type: doc.data['type'],
       );
     }).toList();
   }
+
+//  String personalityAggregator(List<dynamic> scores){
+//    print(scores);
+//    int index = 0;
+//    int currentScore = scores[0];
+//    for(int score in scores){
+//      print(index);
+//      if(currentScore < score){
+//        index = scores.indexOf(score);
+//      }
+//    }
+//    if(index == 0){
+//      return 'Foodie';
+//    } else if(index == 1){
+//      return 'Adventurous';
+//    } else if(index == 2){
+//      return 'Nature-Lover';
+//    } else if(index == 3){
+//      return 'Shopaholic';
+//    } else if(index == 4){
+//      return 'Artistic';
+//    }
+//  }
 }

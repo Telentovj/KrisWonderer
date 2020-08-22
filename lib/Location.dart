@@ -11,6 +11,8 @@ class Location{
   String name;
   double x;
   double y;
+  String description;
+  String type;
 
   Location({
     this.id,
@@ -21,6 +23,8 @@ class Location{
     this.name,
     this.x,
     this.y,
+    this.description,
+    this.type,
   });
 
   double distanceToLocation(Location other) {
