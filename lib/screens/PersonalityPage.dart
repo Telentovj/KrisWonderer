@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kriswonderer/DelayInput.dart';
-import 'AppStyle.dart';
-import 'Personality.dart';
+import '../custom-widgets/AppStyle.dart';
+import '../models/Personality.dart';
+import "DelayInput.dart";
 
 class PersonalityPage extends StatefulWidget {
   @override

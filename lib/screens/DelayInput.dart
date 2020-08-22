@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import "package:numberpicker/numberpicker.dart";
-import 'AppStyle.dart';
+import '../custom-widgets/AppStyle.dart';
 import 'Home.dart';
-import 'Personality.dart';
+import "../models/Personality.dart";
 
 class DelayInput extends StatefulWidget {
   final Personality personality;

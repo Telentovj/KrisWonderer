@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:kriswonderer/Location.dart';
-import 'package:kriswonderer/LocationTile.dart';
+import '../custom-widgets/AppStyle.dart';
+import "../models/Location.dart";
+import "../custom-widgets/LocationTile.dart";
 
-import 'AppStyle.dart';
 class LocationPicker extends StatefulWidget {
   final List<Location> locations;
   final List<Location> fullLocation;

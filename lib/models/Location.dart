@@ -1,6 +1,5 @@
 import 'dart:math';
-
-import 'package:kriswonderer/Personality.dart';
+import "../models/Personality.dart";
 
 class Location{
   String id;

@@ -1,8 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:kriswonderer/Location.dart';
-
 import 'AppStyle.dart';
+import "../models/Location.dart";
 
 /// Custom class required for a SliverPersistentHeader.
 class SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {

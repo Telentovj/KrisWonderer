@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kriswonderer/Location.dart';
-import 'package:kriswonderer/LocationDetailView.dart';
-
+import "../models/Location.dart";
 import 'AppStyle.dart';
+import "../screens/LocationDetailView.dart";
 
 class LocationTile extends StatelessWidget {
   final Location locale;

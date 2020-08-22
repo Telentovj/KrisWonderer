@@ -1,11 +1,11 @@
 import 'package:countdown_flutter/countdown_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:kriswonderer/AppStyle.dart';
-import "package:kriswonderer/Location.dart";
-import 'package:kriswonderer/LocationPicker.dart';
-import 'package:kriswonderer/Personality.dart';
 import 'package:provider/provider.dart';
 import 'MapPage.dart';
+import "../models/Personality.dart";
+import "../custom-widgets/AppStyle.dart";
+import "LocationPicker.dart";
+import "../models/Location.dart";
 
 class Home extends StatefulWidget {
   final Personality personality;
@@ -65,11 +65,11 @@ class _HomeState extends State<Home> {
           physics: NeverScrollableScrollPhysics(),
           children: [
             LocationPicker(
-                locations: _getLocations(allLocations, widget.duration.inMinutes),
-                fullLocation: allLocations,
+              locations: _getLocations(allLocations, widget.duration.inMinutes),
+              fullLocation: allLocations,
             ),
             MapPage(
-                locations: _getLocations(allLocations, widget.duration.inMinutes)
+              locations: _getLocations(allLocations, widget.duration.inMinutes)
             ),
           ],
         ),

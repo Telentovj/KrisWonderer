@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:kriswonderer/Location.dart';
-import 'package:kriswonderer/SliverCustomerHeaderDelegate.dart';
+import "../models/Location.dart";
+import '../custom-widgets/AppStyle.dart';
+import "../custom-widgets/SliverCustomerHeaderDelegate.dart";
 
-import 'AppStyle.dart';
 class LocationDetailView extends StatefulWidget {
   final Location locale;
 

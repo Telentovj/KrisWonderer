@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:kriswonderer/PersonalityPage.dart';
+import 'file:///C:/Users/Aizat/Desktop/KrisWonderer/lib/screens/PersonalityPage.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
