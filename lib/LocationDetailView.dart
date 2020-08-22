@@ -3,7 +3,11 @@ import 'package:kriswonderer/Location.dart';
 import 'package:kriswonderer/SliverCustomerHeaderDelegate.dart';
 class LocationDetailView extends StatefulWidget {
   final Location locale;
-  LocationDetailView({@required this.locale});
+
+  LocationDetailView({
+    @required this.locale
+  });
+
   @override
   _LocationDetailViewState createState() => _LocationDetailViewState();
 }

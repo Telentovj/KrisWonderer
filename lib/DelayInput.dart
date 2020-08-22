@@ -26,7 +26,10 @@ class _DelayInputState extends State<DelayInput> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Color(0xfffcb130)),
-        title: Text('How long is your delay?', style: TextStyle(color: Color(0xfffcb130))),
+        title: Text(
+          'How long to explore for?',
+          style: TextStyle(color: Color(0xfffcb130))
+        ),
       ),
       body: _buildTimeSetter(),
     );
@@ -41,7 +44,14 @@ class _DelayInputState extends State<DelayInput> {
           children: <Widget>[
             Column(
               children: <Widget>[
-                Text("Days"),
+                Text(
+                  "Days",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: Color(0xfffcb130),
+                  ),
+                ),
                 NumberPicker.integer(
                   initialValue: 0,
                   minValue: 0,
@@ -53,7 +63,14 @@ class _DelayInputState extends State<DelayInput> {
             ),
             Column(
               children: <Widget>[
-                Text("Hrs"),
+                Text(
+                  "Hrs",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: Color(0xfffcb130),
+                  ),
+                ),
                 NumberPicker.integer(
                   initialValue: 0,
                   minValue: 0,
@@ -65,7 +82,14 @@ class _DelayInputState extends State<DelayInput> {
             ),
             Column(
               children: <Widget>[
-                Text("Mins"),
+                Text(
+                  "Mins",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: Color(0xfffcb130),
+                  ),
+                ),
                 NumberPicker.integer(
                   initialValue: 0,
                   minValue: 0,
@@ -82,7 +106,7 @@ class _DelayInputState extends State<DelayInput> {
           child: Container(
             child: Ink(
               decoration: ShapeDecoration(
-                color: Color(0xffDB3A34),
+                color: Color(0xfffcb130),
                 shape: CircleBorder(),
               ),
               child: IconButton(

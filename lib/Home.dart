@@ -25,8 +25,6 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     final List<Location> allLocations = Provider.of<List<Location>>(context) ?? [];
 
-    //all the variables are here already
-
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -53,6 +51,7 @@ class _HomeState extends State<Home> {
             ],
             unselectedLabelColor: Color(0xffa17528),
             labelColor: Color(0xfffcb130),
+            indicatorColor: Color(0xfffcb130),
           ),
         ),
         body: TabBarView(
