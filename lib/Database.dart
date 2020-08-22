@@ -21,7 +21,7 @@ class Database {
         characteristics: doc.data['characteristics'] ?? [],
         x: doc.data['x'] ?? 1.353912,
         y: doc.data['y'] ?? 103.989295,
-        description: doc.data['description'] ?? 'Description not added',
+        description: doc.data['description'] ?? 'No description',
         type: doc.data['type'],
         discounts: doc.data['Discount'] ?? []
       );

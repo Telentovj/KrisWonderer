@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:kriswonderer/Location.dart';
 
+import 'AppStyle.dart';
 
 /// Custom class required for a SliverPersistentHeader.
 class SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {
@@ -9,7 +10,6 @@ class SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {
   final double expandedHeight;
   final double paddingTop;
   final Location location;
-
 
   String statusBarMode = 'dark';
 
@@ -75,7 +75,7 @@ class SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {
               gradient: LinearGradient(
                 colors: [
                   Color.fromARGB(0, 0, 0, 0),
-                  Color.fromARGB(200, 0, 0, 0)
+                  Color.fromARGB(20, 0, 0, 0)
                 ],
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
@@ -88,7 +88,7 @@ class SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {
           left: 0.0,
           right: 0.0,
           child: Container(
-            padding: EdgeInsets.only(top: 20.0, bottom: 15.0),
+            padding: EdgeInsets.only(top: 30.0, bottom: 15.0),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
@@ -104,9 +104,10 @@ class SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {
               child: Text(
                 locale.name,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppStyle.accent,
                   fontSize: 36.0,
                   fontWeight: FontWeight.bold,
+                  fontFamily: "Sigvar"
                 ),
               ),
             ),
