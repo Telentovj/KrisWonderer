@@ -77,4 +77,27 @@ class Location{
 
     return result;
   }
+
+  String getBestType() {
+    int bestIndex = 0;
+    int bestScore = -1;
+    for (int i = 0; i < characteristics.length; i++) {
+      if (characteristics[i] > bestScore) {
+        bestScore = characteristics[i];
+        bestIndex = i;
+      }
+    }
+
+    if (bestIndex == 0) {
+      return "Foodie";
+    } else if (bestIndex == 1) {
+      return "Adventurous";
+    } else if (bestIndex == 2) {
+      return "Nature lover";
+    } else if (bestIndex == 3) {
+      return "Shopaholic";
+    } else {
+      return "Artistic";
+    }
+  }
 }

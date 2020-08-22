@@ -106,7 +106,6 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
     }
 
     Location nextLocation = locationsToVisit[_nextLocationIndex];
-
     CameraPosition next = CameraPosition(
       target: LatLng(nextLocation.x, nextLocation.y),
       zoom: 17,
