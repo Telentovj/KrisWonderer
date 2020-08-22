@@ -71,8 +71,12 @@ class Location{
   // Used to for ranking best locations based on personality.
   // Necessary because a lot of locations have same characteristic values.
   double score(Personality personality) {
-    double result = 0;
+    if (personality == Personality.SPONTANEOUS) {
+      Random rng = Random();
+      return rng.nextDouble();
+    }
 
+    double result = 0;
     for (int i = 0; i < this.characteristics.length; i++) {
       if (i == personality.index) {
         result += this.characteristics[i] * 0.6;

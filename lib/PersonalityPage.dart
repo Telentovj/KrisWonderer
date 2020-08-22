@@ -12,19 +12,19 @@ class _PersonalityPageState extends State<PersonalityPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal,
        title: Text('What kind of person are you?'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
             child: GridView.count(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
               primary: false,
-              padding: const EdgeInsets.all(20),
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
+              padding: EdgeInsets.all(10),
+              crossAxisSpacing: 15,
+              mainAxisSpacing: 20,
               crossAxisCount: 2,
               children: <Widget>[
                 _buildPersonality(title: "Foodie", personality: Personality.FOODIE),
@@ -43,32 +43,58 @@ class _PersonalityPageState extends State<PersonalityPage> {
 
   Widget _buildPersonality({String title, String image, Personality personality}) {
     return GestureDetector(
-      child: Container(
-        padding: EdgeInsets.all(10),
-        child: Center(
-          child: Text(
-            title,
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: 27),
-          )
-        ),
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/Logo/${title.toLowerCase()}.jpg"),
-            fit: BoxFit.cover,
-          ),
-          shape: BoxShape.rectangle,
-        ),
-      ),
       onTap: () {
         Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DelayInput(personality: personality),
-          )
+            context,
+            MaterialPageRoute(
+              builder: (context) => DelayInput(personality: personality),
+            )
         );
       },
+      child: Stack(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey[600],
+                  blurRadius: 2.0,
+                  spreadRadius: 0.0,
+                  offset: Offset(2.0, 2.0), // shadow direction: bottom right
+                )
+              ],
+              image: DecorationImage(
+                image: AssetImage("assets/Logo/${title.toLowerCase()}.jpg"),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+              gradient: LinearGradient(
+                colors: [
+                  Color.fromARGB(70, 0, 0, 0),
+                  Color.fromARGB(70, 0, 0, 0)
+                ],
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+              )
+            ),
+          ),
+          Center(
+            child: Text(
+              title,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
