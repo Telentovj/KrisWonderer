@@ -5,7 +5,6 @@ import 'package:kriswonderer/Location.dart';
 import 'Location.dart';
 
 class MapPage extends StatefulWidget {
-
   final List<Location> locations;
 
   MapPage({
@@ -36,10 +35,8 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
   Widget build(BuildContext context) {
     // not sure what this does but it makes mixin warning disappear
     super.build(context);
-    List<Location> locationsToVisit = widget.locations;
-    locationsToVisit.forEach((element) {
-      print(element.name);
-    });
+    List<Location> locationsToVisit = widget.locations[0]
+        .orderToVisit(widget.locations);
 
     return new Scaffold(
       body: GoogleMap(
@@ -83,12 +80,12 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
     final GoogleMapController controller = await _controller.future;
 
     // Cycle back to the start if the index exceeds number of locations
-    if (_nextLocationIndex >= locationsToVisit.length) {
+    if (_nextLocationIndex >= locationsToVisit.length - 1) {
       _nextLocationIndex = 0;
+    } else {
+      _nextLocationIndex++;
     }
-
     Location nextLocation = locationsToVisit[_nextLocationIndex];
-    _nextLocationIndex++;
 
     CameraPosition next = CameraPosition(
       target: LatLng(nextLocation.x, nextLocation.y),
@@ -102,12 +99,13 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
     final GoogleMapController controller = await _controller.future;
 
     // Cycle back to the start if the index exceeds number of locations
-    if (_nextLocationIndex < 0) {
+    if (_nextLocationIndex <= 0) {
       _nextLocationIndex = locationsToVisit.length - 1;
+    } else {
+      _nextLocationIndex--;
     }
 
     Location nextLocation = locationsToVisit[_nextLocationIndex];
-    _nextLocationIndex--;
 
     CameraPosition next = CameraPosition(
       target: LatLng(nextLocation.x, nextLocation.y),
