@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:kriswonderer/Location.dart';
-
 import 'Location.dart';
 import 'Personality.dart';
 
@@ -12,8 +11,8 @@ class MapPage extends StatefulWidget {
   final List<Location> locations;
 
   MapPage({
-    this.personality = Personality.NATURE_LOVER,
-    this.duration = 150,
+    @required this.personality,
+    @required this.duration,
     @required this.locations,
   });
 
@@ -29,12 +28,8 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
   Completer<GoogleMapController> _controller = Completer();
   GoogleMapController _mapController;
 
-  // Need to update this variable to the next location in the path
-  // every time the floating action button is pressed
-  CameraPosition _nextPos = CameraPosition(
-    target: LatLng(1.357386, 103.988390),
-    zoom: 16,
-  );
+  // Index of the next location in the path. Updated every time the
+  // floating action button is pressed
   int _nextLocationIndex = 0;
 
   // Required to preserve state when switching tabs
@@ -46,6 +41,7 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
     // not sure what this does but it makes mixin warning disappear
     super.build(context);
     List<Location> locationsToVisit = _getLocations(widget.locations);
+    locationsToVisit.forEach((element) {print(element.name);});
 
     return new Scaffold(
       body: GoogleMap(
@@ -102,16 +98,16 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
       ));
     });
 
-    // Add base marker (Changi Airport)
-    markers.add(
-      Marker(
-        markerId: MarkerId("Base"),
-        position: LatLng(1.357386, 103.988390),
-        infoWindow: InfoWindow(
-          title: "Changi Airport"
-        ),
-      )
-    );
+//    // Add base marker (Changi Airport)
+//    markers.add(
+//      Marker(
+//        markerId: MarkerId("Base"),
+//        position: LatLng(1.357386, 103.988390),
+//        infoWindow: InfoWindow(
+//          title: "Changi Airport"
+//        ),
+//      )
+//    );
 
     return markers;
   }

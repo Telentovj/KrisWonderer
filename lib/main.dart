@@ -3,7 +3,6 @@ import 'package:kriswonderer/Database.dart';
 import 'package:kriswonderer/SplashScreen.dart';
 import 'package:provider/provider.dart';
 
-import 'Home.dart';
 
 void main() {
   runApp(MyApp());

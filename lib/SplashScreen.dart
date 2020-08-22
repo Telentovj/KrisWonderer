@@ -1,8 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:kriswonderer/Home.dart';
 import 'package:kriswonderer/PersonalityPage.dart';
+
 class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -20,7 +19,6 @@ class _SplashScreenState extends State<SplashScreen> {
           backgroundColor: Colors.transparent,
         ),
       ),
-
     );
   }
 
@@ -32,10 +30,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void transition() async {
     Timer(
-        Duration(seconds: 1),
-            () => Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (BuildContext context) => PersonalityPage())
-        )
+      Duration(seconds: 0),
+        () => Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (BuildContext context) => PersonalityPage())
+      )
     );
   }
 }
