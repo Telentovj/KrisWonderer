@@ -5,8 +5,17 @@ import 'package:kriswonderer/Location.dart';
 import 'package:provider/provider.dart';
 
 import 'Location.dart';
+import 'Personality.dart';
 
 class MapPage extends StatefulWidget {
+  final Personality personality;
+  final int duration;
+
+  MapPage({
+    this.personality = Personality.ADVENTUROUS,
+    this.duration = 200,
+  });
+
   @override
   _MapPageState createState() => _MapPageState();
 }
@@ -35,23 +44,24 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
   Widget build(BuildContext context) {
     // not sure what this does but it makes mixin warning disappear
     super.build(context);
-    final List<Location> locations = Provider.of<List<Location>>(context) ?? [];
+    final List<Location> allLocations = Provider.of<List<Location>>(context) ?? [];
+    List<Location> locationsToVisit = _getLocations(allLocations);
 
     return new Scaffold(
       body: GoogleMap(
         initialCameraPosition: _changiAirport,
         onMapCreated: _onMapCreated,
-        markers: _createMarkers(locations),
+        markers: _createMarkers(locationsToVisit),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToChangiAirport,
+        onPressed: _goToNextLocation,
         label: Text('Next location'),
         icon: Icon(Icons.airplanemode_active),
       ),
     );
   }
 
-  Future<void> _goToChangiAirport() async {
+  Future<void> _goToNextLocation() async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(_nextPos));
   }
@@ -90,5 +100,27 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
     return markers;
   }
 
+  List<Location> _getLocations(List<Location> allLocations) {
+    // Sort by descending the personality value of the location
+    allLocations.sort(
+        (a, b) => b.score(widget.personality)
+            .compareTo(a.score(widget.personality))
+    );
+    allLocations.forEach((element) {print(element.characteristics);});
 
+    List<Location> result = [];
+    int remainingDuration = widget.duration;
+    int i = 0;
+    while (remainingDuration > 0 && i < allLocations.length) {
+      if (allLocations[i].duration < remainingDuration) {
+        result.add(allLocations[i]);
+        remainingDuration -= allLocations[i].duration;
+      }
+      i++;
+    }
+
+    print(result);
+    print(remainingDuration);
+    return result;
+  }
 }
