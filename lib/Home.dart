@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:kriswonderer/LocationPicker.dart';
 
 import 'MapPage.dart';
 import 'PersonalityPage.dart';
 
 class Home extends StatefulWidget {
+  final String personality;
+  final int days;
+  final int hours;
+  final int minutes;
+  Home({Key key, @required this.personality, @required this.days, @required this.hours, @required this.minutes}) : super(key: key);
   @override
   _HomeState createState() => _HomeState();
 }
@@ -11,6 +17,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    //all the variables are here already
+    print(widget.personality);
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -26,7 +34,7 @@ class _HomeState extends State<Home> {
         body: TabBarView(
           physics: NeverScrollableScrollPhysics(),
           children: [
-            PersonalityPage(),
+            LocationPicker(),
             MapPage(),
           ],
         ),
