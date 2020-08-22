@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:kriswonderer/Location.dart';
-import 'package:provider/provider.dart';
 
 import 'Location.dart';
 import 'Personality.dart';
@@ -10,10 +9,12 @@ import 'Personality.dart';
 class MapPage extends StatefulWidget {
   final Personality personality;
   final int duration;
+  final List<Location> locations;
 
   MapPage({
-    this.personality = Personality.ADVENTUROUS,
-    this.duration = 200,
+    this.personality = Personality.NATURE_LOVER,
+    this.duration = 150,
+    @required this.locations,
   });
 
   @override
@@ -21,17 +22,12 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<MapPage> {
-  // Required to preserve state when switching tabs
-  @override
-  bool get wantKeepAlive => true;
-
-  Completer<GoogleMapController> _controller = Completer();
-  GoogleMapController _mapController;
-
   static final CameraPosition _changiAirport = CameraPosition(
     target: LatLng(1.357386, 103.988390),
     zoom: 16,
   );
+  Completer<GoogleMapController> _controller = Completer();
+  GoogleMapController _mapController;
 
   // Need to update this variable to the next location in the path
   // every time the floating action button is pressed
@@ -39,13 +35,17 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
     target: LatLng(1.357386, 103.988390),
     zoom: 16,
   );
+  int _nextLocationIndex = 0;
+
+  // Required to preserve state when switching tabs
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
     // not sure what this does but it makes mixin warning disappear
     super.build(context);
-    final List<Location> allLocations = Provider.of<List<Location>>(context) ?? [];
-    List<Location> locationsToVisit = _getLocations(allLocations);
+    List<Location> locationsToVisit = _getLocations(widget.locations);
 
     return new Scaffold(
       body: GoogleMap(
@@ -54,16 +54,32 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
         markers: _createMarkers(locationsToVisit),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToNextLocation,
+        onPressed: () => _goToNextLocation(locationsToVisit),
         label: Text('Next location'),
         icon: Icon(Icons.airplanemode_active),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 
-  Future<void> _goToNextLocation() async {
+  Future<void> _goToNextLocation(List<Location> locationsToVisit) async {
     final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(_nextPos));
+
+    // Cycle back to the start if the index exceeds number of locations
+    if (_nextLocationIndex >= locationsToVisit.length) {
+      _nextLocationIndex = 0;
+    }
+
+    Location nextLocation = locationsToVisit[_nextLocationIndex];
+    _nextLocationIndex++;
+    print(nextLocation.name);
+
+    CameraPosition next = CameraPosition(
+      target: LatLng(nextLocation.x, nextLocation.y),
+      zoom: 17,
+    );
+
+    controller.animateCamera(CameraUpdate.newCameraPosition(next));
   }
 
   void _onMapCreated(GoogleMapController mapController) {
@@ -100,13 +116,13 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
     return markers;
   }
 
+  // Gets the locations to visit based on personality chosen
   List<Location> _getLocations(List<Location> allLocations) {
     // Sort by descending the personality value of the location
     allLocations.sort(
         (a, b) => b.score(widget.personality)
             .compareTo(a.score(widget.personality))
     );
-    allLocations.forEach((element) {print(element.characteristics);});
 
     List<Location> result = [];
     int remainingDuration = widget.duration;
@@ -119,8 +135,6 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
       i++;
     }
 
-    print(result);
-    print(remainingDuration);
     return result;
   }
 }

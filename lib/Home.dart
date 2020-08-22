@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import "package:kriswonderer/Location.dart";
 
 import 'MapPage.dart';
 import 'PersonalityPage.dart';
@@ -11,6 +13,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    final List<Location> allLocations = Provider.of<List<Location>>(context) ?? [];
+
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -27,7 +31,7 @@ class _HomeState extends State<Home> {
           physics: NeverScrollableScrollPhysics(),
           children: [
             PersonalityPage(),
-            MapPage(),
+            MapPage(locations: allLocations,),
           ],
         ),
       ),
