@@ -51,7 +51,7 @@ class _LocationPickerState extends State<LocationPicker> {
             child: FloatingActionButton(
               heroTag: "btn1",
               child: Icon(Icons.add),
-              backgroundColor: Colors.blueAccent,
+              backgroundColor: Color(0xfffcb130),
               elevation: 5,
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(
@@ -77,7 +77,6 @@ class _LocationPickerState extends State<LocationPicker> {
     return Scaffold(
       appBar: AppBar(
           title: Text('Add Locations'),
-        backgroundColor: Colors.teal,
       ),
       body: Column(
         children: <Widget>[

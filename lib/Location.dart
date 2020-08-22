@@ -27,6 +27,7 @@ class Location{
     this.type,
   });
 
+  // Calculates distance using Haversine formula
   double distanceToLocation(Location other) {
     double p = 0.017453292519943295; // pi/180
     double a = 0.5 - cos((other.x - this.x) * p)/2
@@ -37,39 +38,28 @@ class Location{
   }
 
   // Assume current location is starting point
-  List<Location> orderToVisit(List<Location> givenLocations) {
-    List<Location> locations = List<Location>();
-    locations.add(this);
-    locations.addAll(givenLocations);
+  List<Location> orderToVisit(List<Location> locations) {
 
-    List<bool> visited = List.generate(locations.length, (int i) => false);
     List<Location> result = [];
+    Location currentLocation = this;
 
-    Location currentLocation = locations[0];
-    visited[0] = true;
-
-    while (result.length < locations.length) {
-      Location nextLocation = currentLocation;
-      int nextLocationIndex = 0;
+    while (locations.isNotEmpty) {
       double minDistance = double.maxFinite;
+      Location minLocation = currentLocation;
 
-      for (int i = 0; i < visited.length; i++) {
-        if (!visited[i]) {
-          double distance = currentLocation.distanceToLocation(locations[i]);
-          if (distance < minDistance) {
-            minDistance = distance;
-            nextLocation = locations[i];
-          }
+      for (Location location in locations) {
+        double distance = currentLocation.distanceToLocation(location);
+        if (distance < minDistance) {
+          minDistance = distance;
+          minLocation = location;
         }
       }
 
-      result.add(nextLocation);
-      currentLocation = nextLocation;
-      visited[nextLocationIndex] = true;
+      result.add(minLocation);
+      locations.remove(minLocation);
     }
 
-//     return result;
-    return locations;
+    return result;
   }
 
   // Used to for ranking best locations based on personality.
@@ -90,5 +80,28 @@ class Location{
     }
 
     return result;
+  }
+
+  String getBestType() {
+    int bestIndex = 0;
+    int bestScore = -1;
+    for (int i = 0; i < characteristics.length; i++) {
+      if (characteristics[i] > bestScore) {
+        bestScore = characteristics[i];
+        bestIndex = i;
+      }
+    }
+
+    if (bestIndex == 0) {
+      return "Foodie";
+    } else if (bestIndex == 1) {
+      return "Adventurous";
+    } else if (bestIndex == 2) {
+      return "Nature lover";
+    } else if (bestIndex == 3) {
+      return "Shopaholic";
+    } else {
+      return "Artistic";
+    }
   }
 }

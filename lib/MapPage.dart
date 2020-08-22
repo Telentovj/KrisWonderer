@@ -5,7 +5,6 @@ import 'package:kriswonderer/Location.dart';
 import 'Location.dart';
 
 class MapPage extends StatefulWidget {
-
   final List<Location> locations;
 
   MapPage({
@@ -36,10 +35,8 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
   Widget build(BuildContext context) {
     // not sure what this does but it makes mixin warning disappear
     super.build(context);
-    List<Location> locationsToVisit = widget.locations;
-    locationsToVisit.forEach((element) {
-      print(element.name);
-    });
+    List<Location> locationsToVisit = widget.locations[0]
+        .orderToVisit(widget.locations);
 
     return new Scaffold(
       body: GoogleMap(
@@ -47,11 +44,33 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
         onMapCreated: _onMapCreated,
         markers: _createMarkers(locationsToVisit),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        heroTag: "btn2",
-        onPressed: () => _goToNextLocation(locationsToVisit),
-        label: Text('Next location'),
-        icon: Icon(Icons.airplanemode_active),
+      floatingActionButton: Row(
+        children: <Widget>[
+          SizedBox(width: 15),
+          Container(
+            decoration: BoxDecoration(
+              color: Color(0xfffcb130),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: IconButton(
+              onPressed: () => _goToPreviousLocation(locationsToVisit),
+              icon: Icon(Icons.arrow_back),
+              color: Colors.white,
+            ),
+          ),
+          SizedBox(width: 15),
+          Container(
+            decoration: BoxDecoration(
+              color: Color(0xfffcb130),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: IconButton(
+              onPressed: () => _goToNextLocation(locationsToVisit),
+              icon: Icon(Icons.arrow_forward),
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
@@ -61,14 +80,32 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
     final GoogleMapController controller = await _controller.future;
 
     // Cycle back to the start if the index exceeds number of locations
-    if (_nextLocationIndex >= locationsToVisit.length) {
+    if (_nextLocationIndex >= locationsToVisit.length - 1) {
       _nextLocationIndex = 0;
+    } else {
+      _nextLocationIndex++;
+    }
+    Location nextLocation = locationsToVisit[_nextLocationIndex];
+
+    CameraPosition next = CameraPosition(
+      target: LatLng(nextLocation.x, nextLocation.y),
+      zoom: 17,
+    );
+
+    controller.animateCamera(CameraUpdate.newCameraPosition(next));
+  }
+
+  Future<void> _goToPreviousLocation(List<Location> locationsToVisit) async {
+    final GoogleMapController controller = await _controller.future;
+
+    // Cycle back to the start if the index exceeds number of locations
+    if (_nextLocationIndex <= 0) {
+      _nextLocationIndex = locationsToVisit.length - 1;
+    } else {
+      _nextLocationIndex--;
     }
 
     Location nextLocation = locationsToVisit[_nextLocationIndex];
-    _nextLocationIndex++;
-    print(nextLocation.name);
-
     CameraPosition next = CameraPosition(
       target: LatLng(nextLocation.x, nextLocation.y),
       zoom: 17,
