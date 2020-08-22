@@ -15,8 +15,12 @@ class MyApp extends StatelessWidget {
       value: Database().dbLocations,
       child: MaterialApp(
         home: SplashScreen(),
+        theme: ThemeData().copyWith(
+          primaryColor: Color(0xff1d4886),
+          accentColor: Color(0xfffcb130),
+        ),
         debugShowCheckedModeBanner: false,
-      )
+      ),
     );
   }
 }

@@ -12,7 +12,6 @@ class _PersonalityPageState extends State<PersonalityPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal,
        title: Text('What kind of person are you?'),
       ),
       body: Column(
