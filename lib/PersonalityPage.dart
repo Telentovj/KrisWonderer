@@ -25,6 +25,7 @@ class _PersonalityPageState extends State<PersonalityPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
+            height: 600,
             child: GridView.count(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
