@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'file:///C:/Users/Aizat/Desktop/KrisWonderer/lib/screens/PersonalityPage.dart';
+import 'package:kriswonderer/custom-widgets/AppStyle.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -11,10 +12,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
-      body:Center(
+      body: Center(
         child: CircleAvatar(
-          radius: 200.0,
+          radius: 120.0,
           backgroundImage: ExactAssetImage("assets/Logo/logo.png"),
           backgroundColor: Colors.transparent,
         ),
@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void transition() async {
     Timer(
-      Duration(seconds: 0),
+      Duration(seconds: 3),
         () => Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (BuildContext context) => PersonalityPage())
       )

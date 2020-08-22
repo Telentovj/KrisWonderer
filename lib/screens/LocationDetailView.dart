@@ -84,6 +84,7 @@ class _LocationDetailViewState extends State<LocationDetailView> {
                     Text(
                       widget.locale.description,
                       style: AppStyle.subtitle,
+                      textAlign: TextAlign.justify,
                     ),
                     SizedBox(height: 20),
                     Text(

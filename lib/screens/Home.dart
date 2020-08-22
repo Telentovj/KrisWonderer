@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
               child: Column(
                 children: <Widget>[
                   Text(
-                    'Time Left:',
+                    'Time left',
                     style: AppStyle.standard,
                   ),
                   Container(
