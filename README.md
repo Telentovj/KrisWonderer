@@ -1,5 +1,5 @@
 # KrisWonderer
-A cross-platform mobile recipe app built with Flutter and Firebase that aims to reduce customer dissatisfaction arising from flight delays. The app provides a customised itinerary of various attractions in Changi Airport based on user personality and flight delay duration.
+A cross-platform mobile app built with Flutter and Firebase that aims to reduce customer dissatisfaction arising from flight delays. The app provides a customised itinerary of various attractions in Changi Airport based on user personality and flight delay duration.
 <p align="center">
    <span>
       <img src="https://i.imgur.com/CeD2D0u.png"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
