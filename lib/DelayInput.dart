@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import "package:numberpicker/numberpicker.dart";
+import 'AppStyle.dart';
 import 'Home.dart';
 import 'Personality.dart';
 
@@ -25,10 +26,10 @@ class _DelayInputState extends State<DelayInput> {
     print(widget.personality);
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Color(0xfffcb130)),
+        iconTheme: IconThemeData(color: AppStyle.accent),
         title: Text(
           'How long to explore for?',
-          style: TextStyle(color: Color(0xfffcb130))
+          style: AppStyle.standard,
         ),
       ),
       body: _buildTimeSetter(),
@@ -47,9 +48,10 @@ class _DelayInputState extends State<DelayInput> {
                 Text(
                   "Days",
                   style: TextStyle(
+                    fontFamily: "Sigvar",
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
-                    color: Color(0xfffcb130),
+                    color: AppStyle.accent,
                   ),
                 ),
                 NumberPicker.integer(
@@ -66,9 +68,10 @@ class _DelayInputState extends State<DelayInput> {
                 Text(
                   "Hrs",
                   style: TextStyle(
+                    fontFamily: "Sigvar",
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
-                    color: Color(0xfffcb130),
+                    color: AppStyle.accent,
                   ),
                 ),
                 NumberPicker.integer(
@@ -85,9 +88,10 @@ class _DelayInputState extends State<DelayInput> {
                 Text(
                   "Mins",
                   style: TextStyle(
+                    fontFamily: "Sigvar",
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
-                    color: Color(0xfffcb130),
+                    color: AppStyle.accent,
                   ),
                 ),
                 NumberPicker.integer(
@@ -106,7 +110,7 @@ class _DelayInputState extends State<DelayInput> {
           child: Container(
             child: Ink(
               decoration: ShapeDecoration(
-                color: Color(0xfffcb130),
+                color: AppStyle.accent,
                 shape: CircleBorder(),
               ),
               child: IconButton(

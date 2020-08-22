@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:kriswonderer/Location.dart';
 import 'package:kriswonderer/LocationDetailView.dart';
 
+import 'AppStyle.dart';
+
 class LocationTile extends StatelessWidget {
   final Location locale;
 
@@ -24,8 +26,19 @@ class LocationTile extends StatelessWidget {
               )
           ));
         },
-        title: Text(locale.name),
-        subtitle: Text('Duration: ' + locale.duration.toString() + " minutes    Location: " + locale.location),
+        title: Text(
+          locale.name,
+          style: TextStyle(
+            fontFamily: "GTEestiProText",
+            color: AppStyle.accent,
+          ),
+        ),
+        subtitle: Text(
+          'Duration: ' + locale.duration.toString() + " minutes    Location: " + locale.location,
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
       ),
     );
   }

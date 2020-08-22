@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kriswonderer/DelayInput.dart';
+import 'AppStyle.dart';
 import 'Personality.dart';
 
 class PersonalityPage extends StatefulWidget {
@@ -12,13 +13,10 @@ class _PersonalityPageState extends State<PersonalityPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Color(0xfffcb130)),
+        iconTheme: IconThemeData(color: AppStyle.accent),
         title: Text(
           'What describes you the best?',
-          style: TextStyle(
-            color: Color(0xfffcb130),
-            fontFamily: "Sigvar",
-          )
+          style: AppStyle.standard,
         ),
       ),
       body: Column(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kriswonderer/Location.dart';
 import 'package:kriswonderer/LocationTile.dart';
+
+import 'AppStyle.dart';
 class LocationPicker extends StatefulWidget {
   final List<Location> locations;
   final List<Location> fullLocation;
@@ -19,15 +21,22 @@ class _LocationPickerState extends State<LocationPicker> {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text('Expected time to visit all locations: ' + getDuration().toString() + ' minutes'),
+          Container(
+            padding: EdgeInsets.only(top: 15, bottom: 5),
+            child: Text('Estimated time to visit all locations:'),
+          ),
+          Text(
+            getDuration().toString() + ' minutes',
+            style: TextStyle(
+              fontFamily: "GTEestiProText",
+              fontSize: 18,
+              color: Colors.grey[800]
+            ),
           ),
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
-              padding: EdgeInsets.symmetric(vertical: 10),
               itemCount: widget.locations.length,
               itemBuilder: (context, index) {
                 return Dismissible(
@@ -54,7 +63,7 @@ class _LocationPickerState extends State<LocationPicker> {
             child: FloatingActionButton(
               heroTag: "btn1",
               child: Icon(Icons.add),
-              backgroundColor: Color(0xfffcb130),
+              backgroundColor: AppStyle.accent,
               elevation: 5,
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(
