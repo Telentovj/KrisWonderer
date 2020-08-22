@@ -13,7 +13,13 @@ class _PersonalityPageState extends State<PersonalityPage> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Color(0xfffcb130)),
-        title: Text('What kind of person are you?', style: TextStyle(color: Color(0xfffcb130))),
+        title: Text(
+          'What describes you the best?',
+          style: TextStyle(
+            color: Color(0xfffcb130),
+            fontFamily: "Sigvar",
+          )
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -90,8 +96,10 @@ class _PersonalityPageState extends State<PersonalityPage> {
             child: Text(
               title,
               style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22),
+                color: Colors.white,
+                fontSize: 22,
+                fontFamily: "GTEestiProText"
+              ),
             ),
           ),
         ],
