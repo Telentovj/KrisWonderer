@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kriswonderer/Database.dart';
+import 'package:kriswonderer/SplashScreen.dart';
 import 'package:provider/provider.dart';
 
 import 'Home.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return StreamProvider.value(
       value: Database().dbLocations,
       child: MaterialApp(
-        home: Home(),
+        home: SplashScreen(),
         debugShowCheckedModeBanner: false,
       )
     );
