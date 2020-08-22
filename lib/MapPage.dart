@@ -3,16 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:kriswonderer/Location.dart';
 import 'Location.dart';
-import 'Personality.dart';
 
 class MapPage extends StatefulWidget {
-  final Personality personality;
-  final int duration;
+
   final List<Location> locations;
 
   MapPage({
-    @required this.personality,
-    @required this.duration,
     @required this.locations,
   });
 
@@ -40,8 +36,10 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
   Widget build(BuildContext context) {
     // not sure what this does but it makes mixin warning disappear
     super.build(context);
-    List<Location> locationsToVisit = _getLocations(widget.locations);
-    locationsToVisit.forEach((element) {print(element.name);});
+    List<Location> locationsToVisit = widget.locations;
+    locationsToVisit.forEach((element) {
+      print(element.name);
+    });
 
     return new Scaffold(
       body: GoogleMap(
@@ -50,6 +48,7 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
         markers: _createMarkers(locationsToVisit),
       ),
       floatingActionButton: FloatingActionButton.extended(
+        heroTag: "btn2",
         onPressed: () => _goToNextLocation(locationsToVisit),
         label: Text('Next location'),
         icon: Icon(Icons.airplanemode_active),
@@ -111,26 +110,5 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
 
     return markers;
   }
-
-  // Gets the locations to visit based on personality chosen
-  List<Location> _getLocations(List<Location> allLocations) {
-    // Sort by descending the personality value of the location
-    allLocations.sort(
-        (a, b) => b.score(widget.personality)
-            .compareTo(a.score(widget.personality))
-    );
-
-    List<Location> result = [];
-    int remainingDuration = widget.duration;
-    int i = 0;
-    while (remainingDuration > 0 && i < allLocations.length) {
-      if (allLocations[i].duration < remainingDuration) {
-        result.add(allLocations[i]);
-        remainingDuration -= allLocations[i].duration;
-      }
-      i++;
-    }
-
-    return result;
-  }
 }
+
