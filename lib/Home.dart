@@ -1,5 +1,6 @@
 import 'package:countdown_flutter/countdown_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:kriswonderer/AppStyle.dart';
 import "package:kriswonderer/Location.dart";
 import 'package:kriswonderer/LocationPicker.dart';
 import 'package:kriswonderer/Personality.dart';
@@ -30,15 +31,21 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: Text('KrisWonderer', style: TextStyle(color: Color(0xfffcb130))),
+          title: Text(
+            'KrisWonderer',
+            style: AppStyle.standard
+          ),
           actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0,12,25,10),
+            Container(
+              padding: EdgeInsets.fromLTRB(0,12,25,10),
               child: Column(
                 children: <Widget>[
-                  Text('Time Left:'),
+                  Text(
+                    'Time Left:',
+                    style: AppStyle.standard,
+                  ),
                   Container(
-                    child:Countdown(widget.duration)
+                    child:_buildCountdown(widget.duration)
                   ),
                 ],
               ),
@@ -50,8 +57,8 @@ class _HomeState extends State<Home> {
               Tab(icon: Icon(Icons.map)),
             ],
             unselectedLabelColor: Color(0xffa17528),
-            labelColor: Color(0xfffcb130),
-            indicatorColor: Color(0xfffcb130),
+            labelColor: AppStyle.accent,
+            indicatorColor: AppStyle.accent,
           ),
         ),
         body: TabBarView(
@@ -91,7 +98,7 @@ class _HomeState extends State<Home> {
     return result;
   }
 
- Widget Countdown(Duration duration){
+ Widget _buildCountdown(Duration duration){
    return CountdownFormatted(
      duration: duration,
      builder: (BuildContext ctx, String remaining) {

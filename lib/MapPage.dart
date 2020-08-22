@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:kriswonderer/Location.dart';
+import 'AppStyle.dart';
 import 'Location.dart';
 import 'LocationDetailView.dart';
 
@@ -50,7 +51,7 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
           SizedBox(width: 15),
           Container(
             decoration: BoxDecoration(
-              color: Color(0xfffcb130),
+              color: AppStyle.accent,
               borderRadius: BorderRadius.circular(20),
             ),
             child: IconButton(
@@ -62,7 +63,7 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
           SizedBox(width: 15),
           Container(
             decoration: BoxDecoration(
-              color: Color(0xfffcb130),
+              color: AppStyle.accent,
               borderRadius: BorderRadius.circular(20),
             ),
             child: IconButton(

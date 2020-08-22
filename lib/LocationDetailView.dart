@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kriswonderer/Location.dart';
 import 'package:kriswonderer/SliverCustomerHeaderDelegate.dart';
+
+import 'AppStyle.dart';
 class LocationDetailView extends StatefulWidget {
   final Location locale;
 
@@ -13,7 +15,6 @@ class LocationDetailView extends StatefulWidget {
 }
 
 class _LocationDetailViewState extends State<LocationDetailView> {
-
   final double _appBarHeight = AppBar().preferredSize.height;
 
   @override
@@ -31,48 +32,95 @@ class _LocationDetailViewState extends State<LocationDetailView> {
             ),
           ),
           SliverList(
-            delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                return Container(
-                  padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 50.0),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text('Average Time Spent here: ' + widget.locale.duration.toString() + ' minutes',
-                            style:Theme.of(context).textTheme.headline6,
+            delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
+              return Container(
+                padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 50.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Average time spent here',
+                      style: Theme.of(context).textTheme.headline6.copyWith(
+                          fontFamily: "GTEestiProText"
+                      ),
                     ),
-                        SizedBox(height: 20),
-                        Text(
-                          "Location: " + widget.locale.location,
-                          style: Theme.of(context).textTheme.headline6,
+                    SizedBox(height: 5),
+                    Text(
+                      widget.locale.duration.toString() + ' minutes',
+                      style: AppStyle.subtitle
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      "Location",
+                      style: Theme.of(context).textTheme.headline6.copyWith(
+                          fontFamily: "GTEestiProText"
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      widget.locale.location,
+                      style: AppStyle.subtitle,
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'Popular with',
+                      style: Theme.of(context).textTheme.headline6.copyWith(
+                          fontFamily: "GTEestiProText"
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      getTypeFormatted(widget.locale.type),
+                      style: AppStyle.subtitle,
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'Description' ,
+                      style: Theme.of(context).textTheme.headline6.copyWith(
+                          fontFamily: "GTEestiProText"
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      widget.locale.description,
+                      style: AppStyle.subtitle,
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'Discounts',
+                      style: Theme.of(context).textTheme.headline6.copyWith(
+                        fontFamily: "GTEestiProText"
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      discountList(),
+                      style: AppStyle.subtitle,
+                    ),
+                    SizedBox(height: 20),
+                    Container(
+                      height: 50,
+                      width: 1000,
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15)
                         ),
-                        SizedBox(height: 20),
-                        Row(
-                          children: <Widget>[
-                            Text('Popular with: ',
-                              style:Theme.of(context).textTheme.headline6,
-                            ),
-                            Text(getTypeFormatted(widget.locale.type),
-                              style: TextStyle(color: getColour(widget.locale.type)),
-                            ),
-                          ],
+                        color: AppStyle.accent,
+                        child: Text(
+                          "View on Google Maps",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16
+                          ),
                         ),
-                        SizedBox(height: 20),
-                        Text('Desciption: ' ,
-                          style:Theme.of(context).textTheme.headline6,),
-                        SizedBox(height:10),
-                        Text(widget.locale.description),
-                        SizedBox(height: 30),
-                        Text('Discounts',
-                            style: Theme.of(context).textTheme.headline6,
-                        ),
-                        SizedBox(height:10),
-                        Text(discountList()),
-                      ]
-                  ),
-                );
-              },
-              childCount: 1,
+                        onPressed: () {},
+                      ),
+                    ),
+                  ]
+                ),
+              );
+            },
+            childCount: 1,
             ),
           ),
         ],
@@ -91,19 +139,20 @@ class _LocationDetailViewState extends State<LocationDetailView> {
         discounts += '\n';
       }
     }
-    if(discounts == ""){
-      discounts += 'No Discounts Found';
+    if (discounts == "") {
+      discounts += 'No discounts found';
     }
     return discounts;
   }
+
   Color getColour(String type){
-    if(type == 'Foodie'){
+    if (type == 'Foodie'){
       return Colors.orange;
-    } else if(type == 'Adventurous'){
+    } else if (type == 'Adventurous') {
       return Colors.brown;
-    } else if(type == 'Nature-Lover'){
+    } else if (type == 'Nature-Lover') {
       return Colors.green;
-    } else if(type == 'Shopaholic'){
+    } else if (type == 'Shopaholic') {
       return Colors.purple;
     } else {
       return Colors.blue;
@@ -111,16 +160,16 @@ class _LocationDetailViewState extends State<LocationDetailView> {
   }
 
   String getTypeFormatted(String type){
-    if(type == 'Foodie'){
+    if (type == 'Foodie') {
       return 'Foodies';
-    } else if(type == 'Adventurous'){
-      return 'Adventurous People';
-    } else if(type == 'Nature-Lover'){
-      return 'Nature-Lovers';
-    } else if(type == 'Shopaholic'){
+    } else if (type == 'Adventurous') {
+      return 'Adventurous people';
+    } else if (type == 'Nature-Lover') {
+      return 'Nature lovers';
+    } else if (type == 'Shopaholic') {
       return 'Shopaholic';
     } else {
-      return 'Artistic People';
+      return 'Artistic people';
     }
   }
 }
