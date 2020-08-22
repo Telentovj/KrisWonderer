@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'MapPage.dart';
+import 'PersonalityPage.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -25,7 +26,7 @@ class _HomeState extends State<Home> {
         body: TabBarView(
           physics: NeverScrollableScrollPhysics(),
           children: [
-            Home(),
+            PersonalityPage(),
             MapPage(),
           ],
         ),
