@@ -57,8 +57,13 @@ class _LocationDetailViewState extends State<LocationDetailView> {
                         Text('Desciption: ' ,
                           style:Theme.of(context).textTheme.headline6,),
                         SizedBox(height:10),
-                        Text(widget.locale.description + widget.locale.type),
+                        Text(widget.locale.description),
                         SizedBox(height: 30),
+                        Text('Discounts',
+                            style: Theme.of(context).textTheme.headline6,
+                        ),
+                        SizedBox(height:10),
+                        Text(discountList()),
                       ]
                   ),
                 );
@@ -71,6 +76,22 @@ class _LocationDetailViewState extends State<LocationDetailView> {
     );
   }
 
+  String discountList(){
+    print(widget.locale.discounts);
+    String discounts = '';
+    if(widget.locale.discounts != []) {
+      for (String discount in widget.locale.discounts) {
+        discounts += discount;
+        discounts += '\n';
+        discounts += "";
+        discounts += '\n';
+      }
+    }
+    if(discounts == ""){
+      discounts += 'No Discounts Found';
+    }
+    return discounts;
+  }
   Color getColour(String type){
     if(type == 'Foodie'){
       return Colors.orange;

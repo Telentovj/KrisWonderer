@@ -1,3 +1,4 @@
+import 'package:countdown_flutter/countdown_flutter.dart';
 import 'package:flutter/material.dart';
 import "package:kriswonderer/Location.dart";
 import 'package:kriswonderer/LocationPicker.dart';
@@ -32,6 +33,19 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: Text('KrisWonderer', style: TextStyle(color: Color(0xfffcb130))),
+          actions: <Widget>[
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0,12,25,10),
+              child: Column(
+                children: <Widget>[
+                  Text('Time Left:'),
+                  Container(
+                    child:Countdown(widget.duration)
+                  ),
+                ],
+              ),
+            )
+          ],
           bottom: TabBar(
             tabs: [
               Tab(icon: Icon(Icons.person)),
@@ -77,4 +91,16 @@ class _HomeState extends State<Home> {
 
     return result;
   }
+
+ Widget Countdown(Duration duration){
+   return CountdownFormatted(
+     duration: duration,
+     builder: (BuildContext ctx, String remaining) {
+       return Text(
+         remaining,
+         style: TextStyle(fontSize: 12, color: Colors.blue),
+       ); // 01:00:00
+     },
+   );
+ }
 }

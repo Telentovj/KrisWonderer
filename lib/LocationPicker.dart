@@ -20,6 +20,10 @@ class _LocationPickerState extends State<LocationPicker> {
     return Scaffold(
       body: Column(
         children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('Expected time to visit all locations: ' + getDuration().toString() + ' minutes'),
+          ),
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.vertical,
@@ -64,6 +68,14 @@ class _LocationPickerState extends State<LocationPicker> {
         ],
       ),
     );
+  }
+
+  int getDuration(){
+    int duration = 0;
+    for(Location locale in widget.locations){
+      duration += locale.duration;
+    }
+    return duration;
   }
 
   Widget _buildLocationAdder(List<dynamic> filtered, List<dynamic> all){

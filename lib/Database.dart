@@ -23,6 +23,7 @@ class Database {
         y: doc.data['y'] ?? 103.989295,
         description: doc.data['description'] ?? 'Description not added',
         type: doc.data['type'],
+        discounts: doc.data['Discount'] ?? []
       );
     }).toList();
   }

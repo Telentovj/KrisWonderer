@@ -13,6 +13,7 @@ class Location{
   double y;
   String description;
   String type;
+  List<dynamic> discounts;
 
   Location({
     this.id,
@@ -25,6 +26,7 @@ class Location{
     this.y,
     this.description,
     this.type,
+    this.discounts,
   });
 
   // Calculates distance using Haversine formula
