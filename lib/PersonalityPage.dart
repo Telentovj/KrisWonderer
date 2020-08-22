@@ -91,7 +91,7 @@ class _PersonalityPageState extends State<PersonalityPage> {
               title,
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20),
+                  fontSize: 22),
             ),
           ),
         ],
