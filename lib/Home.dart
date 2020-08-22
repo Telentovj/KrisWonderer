@@ -30,14 +30,15 @@ class _HomeState extends State<Home> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.teal,
           automaticallyImplyLeading: false,
-          title: Text('KrisWonderer'),
+          title: Text('KrisWonderer', style: TextStyle(color: Color(0xfffcb130))),
           bottom: TabBar(
             tabs: [
               Tab(icon: Icon(Icons.person)),
               Tab(icon: Icon(Icons.map)),
             ],
+            unselectedLabelColor: Color(0xffa17528),
+            labelColor: Color(0xfffcb130),
           ),
         ),
         body: TabBarView(

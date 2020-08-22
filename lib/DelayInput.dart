@@ -25,8 +25,8 @@ class _DelayInputState extends State<DelayInput> {
     print(widget.personality);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal,
-        title: Text('How long is your delay?')
+        iconTheme: IconThemeData(color: Color(0xfffcb130)),
+        title: Text('How long is your delay?', style: TextStyle(color: Color(0xfffcb130))),
       ),
       body: _buildTimeSetter(),
     );

@@ -47,11 +47,33 @@ class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Ma
         onMapCreated: _onMapCreated,
         markers: _createMarkers(locationsToVisit),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        heroTag: "btn2",
-        onPressed: () => _goToNextLocation(locationsToVisit),
-        label: Text('Next location'),
-        icon: Icon(Icons.airplanemode_active),
+      floatingActionButton: Row(
+        children: <Widget>[
+          SizedBox(width: 15),
+          Container(
+            decoration: BoxDecoration(
+              color: Color(0xfffcb130),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: IconButton(
+              onPressed: () => _goToNextLocation(locationsToVisit),
+              icon: Icon(Icons.arrow_back),
+              color: Colors.white,
+            ),
+          ),
+          SizedBox(width: 15),
+          Container(
+            decoration: BoxDecoration(
+              color: Color(0xfffcb130),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: IconButton(
+              onPressed: () => _goToNextLocation(locationsToVisit),
+              icon: Icon(Icons.arrow_forward),
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
