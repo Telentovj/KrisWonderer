@@ -14,17 +14,19 @@ A cross-platform mobile app built with Flutter and Firebase that aims to reduce 
 </p>
    
 ## Demo Video ## 
-[![video](https://i.imgur.com/3iQ3xP5.png)](https://drive.google.com/file/d/1qHgzb36p972RsVAY6Nyiu4egDjLustLx/view?usp=sharing)
+[![video](https://i.imgur.com/3iQ3xP5.png)](https://drive.google.com/file/d/16au_d4gwBz7giPR03slq-Fe-nXhfsHbT/view?usp=sharing)
 
 ## Installation ##
-### Option 1: apk download
-   1. [Download the apk](https://github.com/aizatazhar/RecipeMine/releases/tag/v1.0.0) and install the app on your Android machine
+### Option 1: apk download (recommended)
+   1. [Download the apk](https://github.com/aizatazhar/KrisWonderer/releases/tag/v1.0.0) and install the app on your Android machine
 
 ### Option 2: Cloning
    **Requirements**
    * [Flutter](https://flutter.dev/docs/get-started/install)
+   * [Google Maps API key](https://cloud.google.com/maps-platform/)
 
    **Setup**
    1. Clone the above repo into your local directory: ```git clone https://github.com/aizatazhar/RecipeMine.git ```
-   2. Launch an emulator or connect your device with developer options enabled
-   3. Run ``` flutter run ```
+   3. Specify your API key in the application manifest ```android/app/src/main/AndroidManifest.xml```
+   3. Launch an emulator or connect your device with developer options enabled
+   4. Run ``` flutter run ```
