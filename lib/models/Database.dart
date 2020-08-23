@@ -1,6 +1,5 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'file:///C:/Users/Aizat/Desktop/KrisWonderer/lib/models/Location.dart';
+import "Location.dart";
 
 class Database {
 
