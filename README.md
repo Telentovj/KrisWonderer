@@ -1,16 +1,11 @@
 # KrisWonderer
 A cross-platform mobile app built with Flutter and Firebase that aims to reduce customer dissatisfaction arising from flight delays. The app provides a customised itinerary of various attractions in Changi Airport based on user personality and flight delay duration.
 <p align="center">
-   <span>
-      <img src="https://i.imgur.com/CeD2D0u.png"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <img src="https://i.imgur.com/Kkzrfln.png"/>
-   </span>
+      <img src="/readme_assets/personality_choice.png" width=30% height=30%> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <img src="/readme_assets/attraction.png" width=30% height=30%> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    <br>
-   <br>
-   <span>
-      <img src="https://i.imgur.com/pBtAIcl.png"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <img src="https://i.imgur.com/2hZM5l3.png"/>
-   </span>
+      <img src="/readme_assets/map.gif" width=30% height=30%> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <img src="/readme_assets/itinerary.gif" width=30% height=30%> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
    
 ## Demo Video ## 
