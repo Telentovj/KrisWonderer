@@ -1,0 +1,8 @@
+enum Personality {
+  FOODIE,
+  ADVENTUROUS,
+  NATURE_LOVER,
+  SHOPAHOLIC,
+  ARTISTIC,
+  SPONTANEOUS,
+}

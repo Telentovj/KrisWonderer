@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kriswonderer/Database.dart';
-import 'package:kriswonderer/SplashScreen.dart';
 import 'package:provider/provider.dart';
-
+import "./screens/SplashScreen.dart";
+import "./models/Database.dart";
 
 void main() {
   runApp(MyApp());
